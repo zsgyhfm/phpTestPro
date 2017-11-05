@@ -7,9 +7,11 @@
  */
 class IndexController{
     function __construct(){
-        echo "初始化 后台IndexController";
+
     }
     public function Index(){
-        echo "<br>执行后台方法";
+
+        //加载视图使用include
+       include CURRENT_VIEW_PATH.'admin.html';
     }
 }

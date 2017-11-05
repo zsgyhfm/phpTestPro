@@ -17,7 +17,7 @@ header("content-type:text/html;charset=utf-8");
 //核心启动类
 class Framework{
     public static function run(){
-        echo "run...<br>";
+
         self::init();
         self::aotoload();
         self::router();
@@ -77,8 +77,8 @@ class Framework{
         //方法名
         $action_name = ACTION;
 
-        echo "路由".$controller_name."<br>";
-        echo "方法".$action_name."<br>";
+//        echo "路由".$controller_name."<br>";
+//        echo "方法".$action_name."<br>";
         //实例化
         $controller = new $controller_name;//这里 实例化 加不加括号都一样(无参数的情况下)
         $controller->$action_name();
@@ -87,7 +87,7 @@ class Framework{
 
     //自动加载方法
     public static function aotoload(){
-        echo "自动加载".__CLASS__."<br>";
+//        echo "自动加载".__CLASS__."<br>";
         //如果只加载方法就只传入方法名，如果要加载某个类中的方法 就需要如下
         spl_autoload_register(array(__CLASS__,'load'));
     }
@@ -96,7 +96,7 @@ class Framework{
     public static function load($classname){
         //如果是控制器类
         if(substr($classname,-10)=='Controller'){
-            echo "是控制器<br>";
+//            echo "是控制器<br>";
             require CURRENT_CONTROLLER_PATH.$classname.'.Class.php';
         }elseif (substr($classname,-5)=='Model'){
             //如果是模型类
