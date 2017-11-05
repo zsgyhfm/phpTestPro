@@ -6,6 +6,9 @@
  * Time: 10:57
  */
 include("framework/core/Framework.class.php");
+
+
+echo "<pre>";
 Framework::run();
 
-echo "<br>".VIEW_PATH;
+//echo "<br>".VIEW_PATH;
