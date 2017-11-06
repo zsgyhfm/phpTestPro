@@ -48,7 +48,7 @@ class Framework{
         //框架核心路径
         define("CORE_PATH",FRAMEWORK_PATH."core".DS);
         //数据库操作路径
-        define("DB_PATH",FRAMEWORK_PATH."datebase".DS);
+        define("DB_PATH",FRAMEWORK_PATH."database".DS);
         //辅助目录路径
         define("HELPERS_PATH",FRAMEWORK_PATH."helpers".DS);
         //框架资源路径
@@ -72,6 +72,13 @@ class Framework{
 
         //手动载入控制器核心类
         require CORE_PATH."Controller.Class.php";
+
+        //将配置文件存放到全局变量
+        $GLOBALS['config']=include CONFIG_PATH."config.php";
+        //载入mysql封装类
+        include DB_PATH."Mysql.Class.php";
+        //载入模型基类
+        include CORE_PATH."Model.Class.php";
     }
 
     //路由方法
@@ -92,17 +99,20 @@ class Framework{
     public static function aotoload(){
 //        echo "自动加载".__CLASS__."<br>";
         //如果只加载方法就只传入方法名，如果要加载某个类中的方法 就需要如下
+
         spl_autoload_register(array(__CLASS__,'load'));
     }
 
     //自动加载只针对控制器类和模型类
     public static function load($classname){
         //如果是控制器类
+        echo "自动加载".$classname;
         if(substr($classname,-10)=='Controller'){
             echo "是控制器<br>";
             require CURRENT_CONTROLLER_PATH.$classname.'.Class.php';
         }elseif (substr($classname,-5)=='Model'){
             //如果是模型类
+            echo "是模型<br>";
             require MODEL_PATH.$classname.'.Class.php';
         }else{
             //暂无其他情况

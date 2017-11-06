@@ -10,7 +10,11 @@ class IndexController extends Controller {
         echo "初始化 IndexController";
     }
     public function Index(){
-        echo "<br>执行方法";
-        $this->show();
+        echo "<br>执行方法<br>";
+        //
+        echo "<pre>";
+        $item = new itemsModel("items");
+        $list = $item->test();
+        var_dump($list);
     }
 }
