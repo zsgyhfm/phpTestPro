@@ -5,13 +5,15 @@
  * Date: 2017/11/5
  * Time: 下午10:47
  */
-class IndexController{
+class IndexController extends Controller{
     function __construct(){
 
     }
     public function Index(){
 
         //加载视图使用include
-       include CURRENT_VIEW_PATH.'admin.html';
+//       include CURRENT_VIEW_PATH.'admin.html';
+        echo "123";
+       $this->show();
     }
 }

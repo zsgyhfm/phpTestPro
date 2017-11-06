@@ -68,6 +68,10 @@ class Framework{
         //当前访问的视图(已判定了前后端)
         define("CURRENT_VIEW_PATH",VIEW_PATH.PLAFORM.DS);
         //模型是通用所以不分前后端
+
+
+        //手动载入控制器核心类
+        require CORE_PATH."Controller.Class.php";
     }
 
     //路由方法
@@ -82,7 +86,6 @@ class Framework{
         //实例化
         $controller = new $controller_name;//这里 实例化 加不加括号都一样(无参数的情况下)
         $controller->$action_name();
-//        var_dump($controller);
     }
 
     //自动加载方法
@@ -96,7 +99,7 @@ class Framework{
     public static function load($classname){
         //如果是控制器类
         if(substr($classname,-10)=='Controller'){
-//            echo "是控制器<br>";
+            echo "是控制器<br>";
             require CURRENT_CONTROLLER_PATH.$classname.'.Class.php';
         }elseif (substr($classname,-5)=='Model'){
             //如果是模型类
