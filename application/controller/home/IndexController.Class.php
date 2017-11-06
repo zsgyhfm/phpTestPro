@@ -16,5 +16,14 @@ class IndexController extends Controller {
         $item = new itemsModel("items");
         $list = $item->test();
         var_dump($list);
+
+        echo "<br><br>";
+
+        //调用helpers方法 辅助函数
+        $this->helper("input");
+        f1();
+        //加载lib中类 工具类
+        $this->library("Page");
+        page();
     }
 }

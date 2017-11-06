@@ -18,4 +18,13 @@ class Controller{
     public function show(){
         echo "核心类";
     }
+
+    //定义辅助函数方法  如 input_helper.php
+    public function helper($helpers){
+        require HELPERS_PATH."{$helpers}_helper.php";
+    }
+    //定义载入类库的方法
+    public function library($lib){
+        require LIB_PATH ."{$lib}.Class.php";
+    }
 }
